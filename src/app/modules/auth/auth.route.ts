@@ -10,7 +10,10 @@ router.post("/login", AuthController.credentialsLogin)
 router.post("/refresh-token", AuthController.getNewAccessToken)
 router.post("/logout", AuthController.logout)
 router.post("/reset-password", checkAuth(...Object.values(Role)),AuthController.resetPassword)
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+router.post("/forget-password",AuthController.forgetPassword)
+
+
+
 router.get("/google",async (req: Request, res: Response, next: NextFunction)=>{
 passport.authenticate("google", {scope: ["profile", "email"]})(req, res, next)
 })

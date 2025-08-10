@@ -189,12 +189,33 @@ const googleCallback = catchAsync(async (req: Request, res: Response, next: Next
     // })
 })
 
+const forgetPassword = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
 
+
+    const {email} = req.body
+
+    const resut = await AuthServices.forgetPassword(email)
+
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        message: "Email sent Successfully",
+        data: null,
+        success: true,
+
+
+    })
+    // res.status(httpStatus.OK).json({
+    //     success: true,
+    //     message: "All User retrieved successfully",
+    //     data: users
+    // })
+})
 
 export const AuthController = {
     credentialsLogin,
     getNewAccessToken,
     logout,
     resetPassword,
-    googleCallback
+    googleCallback,
+    forgetPassword
 }
